@@ -165,8 +165,11 @@ Project/
 Add screenshots of:
 
 - The home page.
+  ![home page](<CleanShot 2024-12-18 at 00.14.52@2x.png>)
 - File upload page.
+  ![upload section](<CleanShot 2024-12-18 at 00.15.27@2x.png>)
 - Prediction output.
+  ![output](<CleanShot 2024-12-18 at 00.15.55@2x.png>)
 
 ---
 
