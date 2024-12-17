@@ -1,150 +1,177 @@
-import os
-import numpy as np
-import pandas as pd
-import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.applications import EfficientNetB0
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout
-from tensorflow.keras.models import Model
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import cohen_kappa_score
-from tqdm.keras import TqdmCallback # For custom progress bar (Optional)
-import time
-from tensorflow.keras.callbacks import Callback
+Sure! I can help you write a detailed README for your Flask-based ML project. A well-structured README includes:
 
-# Custom callback to measure epoch time
+1. **Project Title**
+2. **Description**
+3. **Installation Instructions**
+4. **Project Structure**
+5. **How to Run**
+6. **Technologies Used**
+7. **Dataset**
+8. **ML Model Details**
+9. **Usage**
+10. **Screenshots**
+11. **License**
+12. **Contributors**
 
-class EpochTimeLogger(Callback):
-def on_epoch_begin(self, epoch, logs=None):
-self.epoch_start_time = time.time() # Start time at the beginning of each epoch
+If you want me to tailor it further with specific parts of your code, share key sections like:
 
-    def on_epoch_end(self, epoch, logs=None):
-        epoch_end_time = time.time()  # End time at the end of each epoch
-        epoch_duration = epoch_end_time - self.epoch_start_time  # Time taken for the epoch
-        # Print the epoch duration and metrics at the end of each epoch
-        print(f"Epoch {epoch + 1} - Time taken: {epoch_duration:.2f} seconds")
-        print(f"Epoch {epoch + 1} - Training Loss: {logs['loss']:.4f}, Training Accuracy: {logs['accuracy']:.4f}")
-        print(f"Epoch {epoch + 1} - Validation Loss: {logs['val_loss']:.4f}, Validation Accuracy: {logs['val_accuracy']:.4f}")
+- Routes in Flask
+- Front-end (HTML/JS/CSS) structure
+- ML model details (like model architecture, libraries used, or any trained model file)
 
-# Local paths
+Otherwise, here’s a starting point for your README:
 
-data_dir = 'train_images'  
-labels_path = 'train.csv'
+---
 
-# Load dataset
+# Diabetic Retinopathy Stage Detection
 
-data = pd.read_csv(labels_path)
-data['id_code'] = data['id_code'] + '.png'
+A machine learning project that determines the **stage of diabetic retinopathy** a person is at, using an interactive web interface. Built with **Flask** for the backend and **HTML, CSS, and JavaScript** for the frontend.
 
-# Preprocess data
+---
 
-data['diagnosis'] = data['diagnosis'].astype(str) # Required for flow_from_dataframe
-train_data, val_data = train_test_split(data, test_size=0.2, stratify=data['diagnosis'])
+## Table of Contents
 
-# Data Augmentation
+- [Description](#description)
+- [Technologies Used](#technologies-used)
+- [Dataset](#dataset)
+- [Installation Instructions](#installation-instructions)
+- [Project Structure](#project-structure)
+- [How to Run](#how-to-run)
+- [Usage](#usage)
+- [Model Details](#model-details)
+- [Screenshots](#screenshots)
+- [Contributors](#contributors)
 
-train_datagen = ImageDataGenerator(
-rescale=1./255,
-rotation_range=20,
-zoom_range=0.15,
-width_shift_range=0.1,
-height_shift_range=0.1,
-shear_range=0.15,
-horizontal_flip=True,
-fill_mode="nearest"
-)
+---
 
-val_datagen = ImageDataGenerator(rescale=1./255)
+## Description
 
-train_generator = train_datagen.flow_from_dataframe(
-train_data,
-directory=data_dir,
-x_col='id_code',
-y_col='diagnosis',
-target_size=(224, 224),
-batch_size=32,
-class_mode='categorical'
-)
+This project detects the **stage of diabetic retinopathy** using a machine learning model. Users can upload retinal images, and the system predicts one of the following stages:
 
-val_generator = val_datagen.flow_from_dataframe(
-val_data,
-directory=data_dir,
-x_col='id_code',
-y_col='diagnosis',
-target_size=(224, 224),
-batch_size=32,
-class_mode='categorical'
-)
+- No Diabetic Retinopathy (Stage 0)
+- Mild Stage
+- Moderate Stage
+- Severe Stage
+- Proliferative Stage
 
-# Build model
+The Flask backend serves the model and handles the user interface requests.
 
-base_model = EfficientNetB0(include_top=False, weights="imagenet", input_shape=(224, 224, 3))
-x = base_model.output
-x = GlobalAveragePooling2D()(x)
-x = Dropout(0.5)(x)
-output = Dense(5, activation="softmax")(x) # 5 classes for diabetic retinopathy severity
+---
 
-model = Model(inputs=base_model.input, outputs=output)
+## Technologies Used
 
-# Freeze base model
+### Backend:
 
-for layer in base_model.layers:
-layer.trainable = False
+- Flask (Python web framework)
+- Machine Learning Libraries: TensorFlow/Keras, Scikit-learn, NumPy, Pandas
 
-# Compile model
+### Frontend:
 
-model.compile(
-optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
-loss="categorical_crossentropy",
-metrics=["accuracy"]
-)
+- HTML/CSS for structure and styling
+- JavaScript for interactivity and API calls
 
-# Train model with verbose=3 and EpochTimeLogger callback
+---
 
-history = model.fit(
-train_generator,
-validation_data=val_generator,
-epochs=25, # Training for 25 epochs
-verbose=3, # Shows progress bar and accuracy/loss at each epoch
-callbacks=[
-TqdmCallback(), # Optional: Custom progress bar
-EpochTimeLogger() # Custom callback to log epoch efficiency
-]
-)
+## Dataset
 
-# Fine-tuning phase
+The model was trained using the **[APTOS 2019 Blindness Detection Dataset](https://www.kaggle.com/c/aptos2019-blindness-detection)**. The dataset contains thousands of retinal images labeled into 5 classes (stages of retinopathy).
 
-for layer in base_model.layers:
-layer.trainable = True
+---
 
-model.compile(
-optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001),
-loss="categorical_crossentropy",
-metrics=["accuracy"]
-)
+## Installation Instructions
 
-# Fine-tuning training with verbose=3 and EpochTimeLogger callback
+To run this project locally, follow these steps:
 
-history_finetune = model.fit(
-train_generator,
-validation_data=val_generator,
-epochs=25, # Training for 25 epochs
-verbose=3, # Shows progress bar and accuracy/loss at each epoch
-callbacks=[
-TqdmCallback(), # Optional: Custom progress bar
-EpochTimeLogger() # Custom callback to log epoch efficiency
-]
-)
+1. Clone this repository:
 
-# Save model
+   ```bash
+   git clone <repository-url>
+   cd <project-folder>
+   ```
 
-model.save("DR-Model4.h5")
+2. Create a virtual environment and activate it:
 
-# Evaluate model
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-val_preds = model.predict(val_generator)
-val_preds_labels = np.argmax(val_preds, axis=1)
-val_true_labels = val_generator.classes
+3. Install the dependencies:
 
-kappa_score = cohen_kappa_score(val_true_labels, val_preds_labels, weights="quadratic")
-print(f"Quadratic Weighted Kappa Score: {kappa_score}")
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Ensure you have the pre-trained ML model file (e.g., `model.h5`) in the project directory.
+
+---
+
+## Project Structure
+
+```
+Project/
+│── static/               # CSS, JavaScript, and images
+│── templates/            # HTML files
+│── model/                # Trained ML model file
+│── app.py                # Flask application
+│── requirements.txt      # List of dependencies
+└── README.md             # Project documentation
+```
+
+---
+
+## How to Run
+
+1. Start the Flask server:
+
+   ```bash
+   python app.py
+   ```
+
+2. Open your browser and go to:
+
+   ```
+   http://127.0.0.1:5000/
+   ```
+
+3. Upload an image of the retina to get predictions.
+
+---
+
+## Usage
+
+1. **Open the Web Interface**  
+   Access the application on your local server.
+
+2. **Upload Image**  
+   Use the upload button to provide a retinal image.
+
+3. **View Prediction**  
+   The system will predict and display the stage of diabetic retinopathy.
+
+---
+
+## Model Details
+
+- **Framework**: TensorFlow/Keras
+- **Model Type**: Convolutional Neural Network (CNN)
+- **Input**: Preprocessed retinal images
+- **Output**: Classification into 5 stages
+
+---
+
+## Screenshots
+
+Add screenshots of:
+
+- The home page.
+- File upload page.
+- Prediction output.
+
+---
+
+## Contributors
+
+- [Bharath](https://github.com/BharathC050903)
+
+---
