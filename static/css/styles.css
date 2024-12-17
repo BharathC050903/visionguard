@@ -1,0 +1,476 @@
+/*
+Primary Green (#388E3C): Use for buttons, headings, and CTAs.
+Secondary Green (#66BB6A): Hover effects or less important buttons.
+Light Green (#A5D6A7): Backgrounds, dividers, or cards.
+Dark Green (#2C6B2F): Text, footer, and dark elements.
+Muted Green (#81C784): Borders, icons, or highlights.
+*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #222;
+  font-family: "Roboto", sans-serif;
+}
+
+/* NAVIGATION SECTION */
+.navigation {
+  background-color: #d6f8d7;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: sticky;
+  top: 0; /* Ensures the navbar stays at the top */
+  z-index: 10; /* Ensures it stays above other content */
+  width: 100%; /* Full width */
+  padding: 0.2rem;
+  bottom: 0.1rem solid #666;
+  transition: background-color 0.6s ease, color 0.4s ease;
+}
+
+.vision-guard-title-logo {
+  padding-left: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 1.2rem;
+}
+
+.vision-guard-icon {
+  width: 4rem;
+  transform: translateY(30%);
+}
+
+.vision-guard-title {
+  color: #332cf2;
+  transform: translateY(40%);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.navigation-elements {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 3rem;
+  justify-items: center;
+  padding: 1.2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+.navigation a {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: #000;
+  font-weight: 600;
+}
+
+/* Intro Section */
+
+.intro-section {
+  display: grid;
+  grid-template-columns: 0.7fr 0.4fr;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  height: 90dvh;
+  width: 100vw;
+  background-color: #d6f8d7;
+}
+.introduction-heading {
+  color: #000;
+  font-size: 4rem;
+  font-weight: 500;
+  margin-bottom: 5rem;
+}
+.introduction-text {
+  font-size: 1.8rem;
+  color: #555;
+}
+.intro-img {
+  max-width: 40rem;
+}
+
+.intro-section-button {
+  margin-top: 5rem;
+  font-size: 5rem;
+}
+
+/* ABOUT SECTION */
+
+.about-section {
+  height: 60%;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.about-heading {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.about-desc {
+  font-size: 2rem;
+  margin-bottom: 4rem;
+  text-align: left;
+}
+
+/* Styling for the table */
+table {
+  table-layout: fixed;
+}
+th,
+td {
+  width: 33.33%;
+}
+table.info {
+  width: 100%;
+  height: 20%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  margin: auto;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.info-heading {
+  font-weight: bold;
+  text-align: center;
+}
+
+.info-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.circle {
+  background-color: #d6f8d7;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 47.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.about-section img {
+  width: 6rem;
+  height: 6rem;
+  padding: 0.1rem;
+  object-fit: cover;
+}
+
+table.info td {
+  font-size: 1.4rem;
+  padding: 1rem;
+}
+.info-content li {
+  margin: 1rem;
+}
+
+/* STAGE SECTION */
+
+.section-heading {
+  margin-top: 7rem;
+  font-size: 6rem;
+  text-align: center;
+  font-weight: bold;
+}
+.stages {
+  margin: auto;
+  width: 80%;
+}
+.stage {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-items: center;
+  gap: 5rem;
+  text-align: left;
+}
+
+.stage-level {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #dbdbdb;
+}
+
+.stage-heading {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.stage-desc {
+  font-size: 1.4rem;
+  text-align: justify;
+  margin-top: 2rem;
+}
+
+/* DIAGNOSIS SECTION */
+
+.diagnosis {
+  justify-content: center;
+  align-items: center;
+  margin: 10rem;
+}
+.steps-container {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.step {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.step img {
+  height: 6rem;
+}
+.step-heading {
+  color: #222;
+  font-size: 1.8rem;
+}
+.step-desc {
+  color: #222;
+  font-size: 1.2rem;
+}
+
+.upload-result-section {
+  margin: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.drag-drop-area-container {
+  background-color: #9d9595a8;
+  border-radius: 1rem;
+}
+.drag-drop-area {
+  margin: 1rem;
+  box-sizing: border-box;
+  background-color: #9d9595a8;
+  border: #000 dashed 0.2rem;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+.drag-drop-area img {
+  height: 14rem;
+}
+.upload-desc {
+  color: #373b44;
+  font-size: 2rem;
+}
+.result {
+  margin: 3rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.stage-result-output {
+  color: #484c55;
+  font-size: 6rem;
+}
+.stage-result-description {
+  color: #373b44;
+  font-size: 2rem;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo img {
+  width: 100px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-social .social-icon {
+  margin: 0 10px;
+}
+
+.footer-social img {
+  width: 25px;
+  height: 25px;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links ul {
+    margin-top: 10px;
+  }
+
+  .footer-social {
+    margin-top: 10px;
+  }
+}
+
+/* Buttons */
+
+/* <button class="button-79" role="button">Button 79</button> */
+
+/* CSS */
+.button-79 {
+  width: auto;
+  backface-visibility: hidden;
+  background: #332cf2;
+  border: 0;
+  border-radius: 0.375rem;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  padding: 1rem 1.25rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform 0.4s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-79:disabled {
+  color: #787878;
+  cursor: auto;
+}
+
+.button-79:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-79:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(0.125rem);
+}
+
+.button-79:focus {
+  outline: 0 solid transparent;
+}
+
+.button-79:focus:before {
+  border-width: 0.125rem;
+  content: "";
+  left: calc(-1 * 0.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1 * 0.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-79:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-79:not(:disabled):active {
+  transform: translateY(0.125rem);
+}
+
+/* <button class="button-89" role="button">Button 89</button> */
+
+/* CSS */
+.button-89 {
+  --b: 3px; /* border thickness */
+  --s: 0.45em; /* size of the corner */
+  --color: #373b44;
+
+  padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background: conic-gradient(
+      from 90deg at var(--b) var(--b),
+      #0000 90deg,
+      var(--color) 0
+    )
+    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
+    calc(100% - var(--b) - 2 * var(--_p));
+  transition: 0.3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: 0.6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-89:hover,
+.button-89:focus-visible {
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: 0.05em;
+}
+
+.button-89:active {
+  background: var(--color);
+  color: #fff;
+}
+.override-margin {
+  margin: 0px;
+}
