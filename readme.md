@@ -171,7 +171,7 @@ Add screenshots of:
 - File upload page.
   ![upload section](<CleanShot 2024-12-18 at 00.15.27@2x.png>)
 - Prediction output.
-  ![output](<CleanShot 2024-12-18 at 00.15.55@2x.png>)
+  ![output](<CleanShot 2024-12-18 at 19.56.50@2x.png>)
 
 ---
 
