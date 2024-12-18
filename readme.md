@@ -166,6 +166,8 @@ Add screenshots of:
 
 - The home page.
   ![home page](<CleanShot 2024-12-18 at 00.14.52@2x.png>)
+- Website
+  ![website](<CleanShot 2024-12-18 at 00.23.51@2x.png>)
 - File upload page.
   ![upload section](<CleanShot 2024-12-18 at 00.15.27@2x.png>)
 - Prediction output.
@@ -175,6 +177,6 @@ Add screenshots of:
 
 ## Contributors
 
-- [Bharath](https://github.com/BharathC050903)
+- [Bharath C](https://github.com/BharathC050903)
 
 ---
