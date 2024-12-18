@@ -260,3 +260,18 @@ if (dropArea) {
       resultDescription.textContent = "Please upload a valid retinal image.";
   }
 }
+
+function displayUploadedImage(imageBase64) {
+  // Create an image element to display the uploaded image
+  const imageContainer = document.querySelector(".uploaded-image-container");
+  if (imageContainer) {
+    imageContainer.innerHTML = ""; // Clear any previous images
+    const imgElement = document.createElement("img");
+    imgElement.src = imageBase64;
+    imgElement.alt = "Uploaded Retinal Image";
+    imgElement.classList.add("uploaded-image");
+    imageContainer.appendChild(imgElement);
+  } else {
+    console.error("Image container element not found.");
+  }
+}
