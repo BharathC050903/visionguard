@@ -165,13 +165,13 @@ Project/
 Add screenshots of:
 
 - The home page.
-  ![home page](<CleanShot 2024-12-18 at 00.14.52@2x.png>)
+  ![home page](</screenshots/CleanShot 2024-12-18 at 00.14.52@2x.png>)
 - Website
-  ![website](<CleanShot 2024-12-18 at 00.23.51@2x.png>)
+  ![website](</screenshots/CleanShot 2024-12-18 at 00.23.51@2x.png>)
 - File upload page.
-  ![upload section](<CleanShot 2024-12-18 at 00.15.27@2x.png>)
+  ![upload section](</screenshots/CleanShot 2024-12-18 at 00.15.27@2x.png>)
 - Prediction output.
-  ![output](<CleanShot 2024-12-18 at 19.56.50@2x.png>)
+  ![output](</screenshots/CleanShot 2024-12-18 at 19.56.50@2x.png>)
 
 ---
 
