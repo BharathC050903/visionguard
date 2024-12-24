@@ -127,7 +127,7 @@ history_finetune = model.fit(
 )
 
 # Save model
-model.save("DR-Model4.h5")
+model.save("DR-Model.h5")
 
 # Evaluate model
 val_preds = model.predict(val_generator)
