@@ -85,7 +85,7 @@ ul {
   justify-items: center;
   justify-content: center;
   align-items: center;
-  padding: 4rem;
+  padding: 10rem;
   height: 90dvh;
   width: 100vw;
   background-color: #d6f8d7;
@@ -107,6 +107,23 @@ ul {
 .intro-section-button {
   margin-top: 5rem;
   font-size: 5rem;
+}
+
+.learn-more-button {
+  position: relative;
+  text-decoration: none;
+  margin-left: 1.8rem;
+  border: #373b44 solid;
+  padding: 1rem 1.4rem 1rem 1rem;
+  border-radius: 0.4rem;
+  color: #000;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+.down-arr {
+  position: absolute;
+  transform: translateY(+11.5px);
 }
 
 /* ABOUT SECTION */
