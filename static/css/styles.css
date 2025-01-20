@@ -126,6 +126,19 @@ ul {
   transform: translateY(+11.5px);
 }
 
+.ml-model {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.icon {
+  width: 4rem;
+}
+
 /* ABOUT SECTION */
 
 .about-section {
@@ -147,6 +160,15 @@ ul {
   font-size: 2rem;
   margin-bottom: 4rem;
   text-align: left;
+}
+
+.ml-accuracy-desc {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.color-blue-span {
+  font-weight: 800;
+  color: #332cf2;
 }
 
 /* Styling for the table */

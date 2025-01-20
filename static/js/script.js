@@ -1,22 +1,24 @@
 // Smooth scroll to the corresponding section on click of navigation buttons
-document.querySelectorAll(".navigation-elements a").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const targetId = e.currentTarget.getAttribute("href"); // Get the href attribute (section ID)
-    const targetSection = document.querySelector(targetId);
+document
+  .querySelectorAll(".navigation-elements a,.intro-section a")
+  .forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = e.currentTarget.getAttribute("href"); // Get the href attribute (section ID)
+      const targetSection = document.querySelector(targetId);
 
-    // Get the height of the navbar
-    const navbarHeight = document.querySelector(".navigation").offsetHeight;
+      // Get the height of the navbar
+      const navbarHeight = document.querySelector(".navigation").offsetHeight;
 
-    // Smooth scroll to the target section
-    if (targetSection) {
-      window.scrollTo({
-        top: targetSection.offsetTop - navbarHeight + 1,
-        behavior: "smooth",
-      });
-    }
+      // Smooth scroll to the target section
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - navbarHeight + 1,
+          behavior: "smooth",
+        });
+      }
+    });
   });
-});
 
 // Smooth scroll for buttons in intro-section and navigation
 document
